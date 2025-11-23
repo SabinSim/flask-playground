@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculation Result</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; background-color: #f4f7f9; color: #333; }
+        h1 { color: #333; border-bottom: 2px solid #007bff; padding-bottom: 10px; }
+        a { text-decoration: none; color: #007bff; transition: color 0.3s; }
+        a:hover { color: #0056b3; }
+        strong { color: #d9534f; font-size: 1.2em; }
+    </style>
+</head>
+<body>
+
+    <h1>Calculation Result</h1>
+
+    <!-- Display the user's input numbers -->
+    <p>Input values: {{ num1 }} and {{ num2 }}</p>
+    
+    <p>
+        <!-- Conditional output based on the operation performed -->
+        {% if operation == "add" %} Addition Result:
+        {% elif operation == "sub" %} Subtraction Result:
+        {% elif operation == "mul" %} Multiplication Result:
+        {% elif operation == "div" %} Division Result:
+        {% else %} Error or Unknown Operation:
+        {% endif %}
+        <!-- Display the final result -->
+        <strong>{{ result }}</strong>
+    </p>
+
+    <!-- Link to go back to the main input page -->
+    <p><a href="/">Calculate Again</a></p>
+
+</body>
+</html>
