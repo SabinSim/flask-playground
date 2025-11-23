@@ -1,36 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Calculation Result</title>
+    <title>Web Calculator</title>
     <style>
-        body { font-family: sans-serif; padding: 20px; background-color: #f4f7f9; color: #333; }
+        body { font-family: sans-serif; padding: 20px; background-color: #f4f7f9; }
         h1 { color: #333; border-bottom: 2px solid #007bff; padding-bottom: 10px; }
-        a { text-decoration: none; color: #007bff; transition: color 0.3s; }
-        a:hover { color: #0056b3; }
-        strong { color: #d9534f; font-size: 1.2em; }
+        input, select { 
+            padding: 10px; 
+            font-size: 16px; 
+            width: 90%; 
+            max-width: 300px; 
+            margin-bottom: 15px; 
+            border: 1px solid #ccc; 
+            border-radius: 4px; 
+            box-sizing: border-box;
+        }
+        select { width: 90%; max-width: 300px; }
+        button { 
+            padding: 12px; 
+            width: 90%; 
+            max-width: 300px; 
+            background: #007bff; 
+            color: white; 
+            border: none; 
+            border-radius: 6px; 
+            font-size: 18px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover { background: #0056b3; }
     </style>
 </head>
 <body>
 
-    <h1>Calculation Result</h1>
+    <h1>Flask Web Calculator</h1>
 
-    <!-- Display the user's input numbers -->
-    <p>Input values: {{ num1 }} and {{ num2 }}</p>
-    
-    <p>
-        <!-- Conditional output based on the operation performed -->
-        {% if operation == "add" %} Addition Result:
-        {% elif operation == "sub" %} Subtraction Result:
-        {% elif operation == "mul" %} Multiplication Result:
-        {% elif operation == "div" %} Division Result:
-        {% else %} Error or Unknown Operation:
-        {% endif %}
-        <!-- Display the final result -->
-        <strong>{{ result }}</strong>
-    </p>
+    <!-- Form to submit numbers and operation to the /calculate route -->
+    <form action="/calculate" method="POST">
+        <input type="number" step="any" name="num1" placeholder="Number 1" required><br>
+        <input type="number" step="any" name="num2" placeholder="Number 2" required><br>
 
-    <!-- Link to go back to the main input page -->
-    <p><a href="/">Calculate Again</a></p>
+        <select name="operation">
+            <option value="add">Add (+)</option>
+            <option value="sub">Subtract (-)</option>
+            <option value="mul">Multiply (×)</option>
+            <option value="div">Divide (÷)</option>
+        </select><br>
+
+        <button type="submit">Calculate</button>
+    </form>
 
 </body>
 </html>
