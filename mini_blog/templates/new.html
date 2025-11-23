@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create New Post</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; background-color: #f4f7f9; }
+        h1 { color: #333; border-bottom: 2px solid #007bff; padding-bottom: 10px; margin-bottom: 20px; }
+        form { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 15px; 
+            width: 90%; 
+            max-width: 600px; 
+            background-color: white; 
+            padding: 20px; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        input, textarea { 
+            padding: 12px; 
+            border: 1px solid #ccc; 
+            border-radius: 6px; 
+            font-size: 16px; 
+        }
+        textarea { resize: vertical; }
+        button { 
+            padding: 12px; 
+            background: #28a745; 
+            color: #fff; 
+            border: none; 
+            border-radius: 6px; 
+            font-size: 18px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover { background: #1e7e34; }
+        .back-link { margin-top: 20px; display: block; color: #6c757d; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+    <h1>Create New Post</h1>
+    
+    <!-- Form submits data to the /create route using POST method -->
+    <form action="/create" method="POST">
+        <input type="text" name="title" placeholder="Post Title" required>
+        <textarea name="content" rows="10" placeholder="Post Content" required></textarea>
+        <button type="submit">Save Post</button>
+    </form>
+
+    <a href="/" class="back-link">&larr; Back to Home</a>
+
+</body>
+</html>
