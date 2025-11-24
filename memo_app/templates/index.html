@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Memo App</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; background-color: #f4f7f9; }
+        h1 { color: #333; border-bottom: 2px solid #007bff; padding-bottom: 10px; }
+        .memo { 
+            border: 1px solid #ddd; 
+            padding: 15px; 
+            margin-bottom: 10px; 
+            border-radius: 8px; 
+            background-color: white; 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .memo p { margin: 0 0 5px 0; font-size: 1.1em; }
+        .memo small { color: #6c757d; display: block; text-align: right; }
+        a { text-decoration: none; color: #007bff; font-weight: bold; transition: color 0.3s; }
+        a:hover { color: #0056b3; }
+    </style>
+</head>
+<body>
+
+    <h1>Memo List</h1>
+    <!-- Link to the creation page -->
+    <p><a href="/new">Create New Memo &rarr;</a></p>
+
+    <!-- Loop through all memos to display them -->
+    {% for memo in memos %}
+    <div class="memo">
+        <!-- memo[1] is the content -->
+        <p>{{ memo[1] }}</p>
+        <!-- memo[2] is the created_at timestamp -->
+        <small>{{ memo[2] }}</small>
+    </div>
+    {% endfor %}
+
+</body>
+</html>
