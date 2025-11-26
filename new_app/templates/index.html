@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top News</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen py-10 px-4 flex justify-center">
+
+    <div class="max-w-2xl w-full bg-white shadow-xl rounded-lg overflow-hidden">
+        <!-- Header -->
+        <div class="bg-orange-500 p-6">
+            <h1 class="text-3xl font-bold text-white text-center">Top News</h1>
+            <p class="text-orange-100 text-center text-sm mt-1">Hacker News Top 10</p>
+        </div>
+
+        <!-- News List -->
+        <div class="divide-y divide-gray-100">
+            {% for item in news %}
+                <div class="news-item hover:bg-orange-50 transition duration-150 ease-in-out">
+                    <a href="{{ item.url }}" target="_blank" class="block p-5 flex items-start">
+                        <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 bg-orange-100 text-orange-600 font-bold rounded-full mr-4 text-sm">
+                            {{ loop.index }}
+                        </span>
+                        <div>
+                            <h2 class="text-lg font-semibold text-gray-800 hover:text-orange-600 leading-tight mb-1">
+                                {{ item.title }}
+                            </h2>
+                            {% if item.url %}
+                                <p class="text-xs text-gray-400 truncate max-w-md">{{ item.url }}</p>
+                            {% endif %}
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Footer / Empty State -->
+        {% if not news %}
+            <div class="p-8 text-center text-gray-500">
+                Loading news... or no news found.
+            </div>
+        {% else %}
+             <div class="bg-gray-50 p-4 text-center text-xs text-gray-400">
+                Data provided by Hacker News API
+            </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
